@@ -43,6 +43,6 @@ test "should destroy cart" do
     delete cart_url(@cart)
   end
 
-  assert_redirected_to root_url
+  assert_redirected_to carts_url
 end
 end

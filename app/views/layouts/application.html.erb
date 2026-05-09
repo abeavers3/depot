@@ -36,9 +36,17 @@
         </nav>
       </aside>
 
-      <section class="depot-content">
-        <%= yield %>
-      </section>
+<section class="depot-content">
+  <% if notice.present? %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
+
+  <% if alert.present? %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
+
+  <%= yield %>
+</section>
     </main>
   </body>
 </html>

@@ -55,7 +55,7 @@ def destroy
 
   respond_to do |format|
     format.html do
-      redirect_to root_path,
+      redirect_to carts_url,
         notice: "Your cart is currently empty.",
         status: :see_other
     end
