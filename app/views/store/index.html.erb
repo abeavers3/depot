@@ -1,0 +1,27 @@
+<h1>Your Pragmatic Catalog</h1>
+
+<div class="store-catalog">
+  <% @products.each do |product| %>
+    <div class="store-product">
+      <%= image_tag(product.image_url, class: "store-product-image") if product.image_url.present? %>
+
+      <div class="store-product-info">
+        <h2><%= product.title %></h2>
+
+        <p>
+          <%= sanitize(product.description) %>
+        </p>
+
+        <div class="store-product-footer">
+          <span class="store-product-price">
+            <%= number_to_currency(product.price) %>
+          </span>
+
+          <button class="store-add-button">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
