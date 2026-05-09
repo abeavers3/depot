@@ -1,6 +1,6 @@
-<%= form_with(model: product) do |form| %>
+<%= form_with(model: product, class: "order-form") do |form| %>
   <% if product.errors.any? %>
-    <div style="color: red">
+    <div class="alert">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
       <ul>
@@ -12,23 +12,32 @@
   <% end %>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
+    <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.textarea :description %>
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 5 %>
   </div>
 
   <div>
-    <%= form.label :image_url, style: "display: block" %>
+    <%= form.label :image_url %>
     <%= form.text_field :image_url %>
   </div>
 
   <div>
-    <%= form.label :price, style: "display: block" %>
+    <%= form.label :price %>
     <%= form.text_field :price %>
+  </div>
+
+  <div>
+    <%= form.label :category_id, "Category" %>
+    <%= form.collection_select :category_id,
+      Category.order(:name),
+      :id,
+      :name,
+      { prompt: "Choose a category" } %>
   </div>
 
   <div>

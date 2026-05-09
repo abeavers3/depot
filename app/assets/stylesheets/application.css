@@ -501,3 +501,55 @@ select:focus {
   background: rgba(0, 0, 0, 0.1);
   text-decoration: none;
 }
+
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 0 0 1.5rem;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: var(--shadow-soft);
+  transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.category-pill:hover {
+  transform: translateY(-1px);
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.category-pill.active {
+  background: var(--green);
+  color: white;
+  border-color: transparent;
+}
+
+.category-heading {
+  margin: -0.5rem 0 1.25rem;
+  color: var(--muted);
+}
+
+.product-category-label {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 0.45rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(22, 124, 58, 0.1);
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}

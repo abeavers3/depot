@@ -1,11 +1,33 @@
 <h1>Your Pragmatic Catalog</h1>
 
+<div class="category-filter">
+  <%= link_to "All Products",
+    root_path,
+    class: params[:category_id].blank? ? "category-pill active" : "category-pill" %>
+
+  <% @categories.each do |category| %>
+    <%= link_to category.name,
+      root_path(category_id: category.id),
+      class: params[:category_id].to_s == category.id.to_s ? "category-pill active" : "category-pill" %>
+  <% end %>
+</div>
+
+<% if @selected_category.present? %>
+  <p class="category-heading">
+    Showing products in <strong><%= @selected_category.name %></strong>
+  </p>
+<% end %>
+
 <div class="store-catalog">
   <% @products.each do |product| %>
     <div class="store-product">
       <%= image_tag(product.image_url, class: "store-product-image") if product.image_url.present? %>
 
       <div class="store-product-info">
+        <div class="product-category-label">
+          <%= product.category&.name || "Uncategorized" %>
+        </div>
+
         <h2><%= product.title %></h2>
 
         <p>
@@ -17,9 +39,9 @@
             <%= number_to_currency(product.price) %>
           </span>
 
-	<%= button_to "Add to Cart",
-	line_items_path(product_id: product),
-	 class: "store-add-button" %>
+          <%= button_to "Add to Cart",
+            line_items_path(product_id: product),
+            class: "store-add-button" %>
         </div>
       </div>
     </div>
