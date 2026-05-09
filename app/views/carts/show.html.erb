@@ -24,9 +24,7 @@
 
         <tr class="cart-total">
           <td colspan="2">Total</td>
-          <td>
-            <%= number_to_currency(@cart.line_items.to_a.sum(&:total_price)) %>
-          </td>
+          <td><%= number_to_currency(@cart.total_price) %></td>
         </tr>
       </tbody>
     </table>
@@ -38,4 +36,3 @@
 <p>
   <%= link_to "Back to catalog", root_path %>
 </p>
-
