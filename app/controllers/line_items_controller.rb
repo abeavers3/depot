@@ -51,15 +51,20 @@ end
   end
 
   # DELETE /line_items/1 or /line_items/1.json
-  def destroy
-    @line_item.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to line_items_path, notice: "Line item was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
+def destroy
+  @line_item.destroy!
+
+  respond_to do |format|
+    format.html do
+      redirect_back fallback_location: root_path,
+        notice: "Item was removed from your cart.",
+        status: :see_other
     end
-  end
 
+    format.json { head :no_content }
+  end
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item

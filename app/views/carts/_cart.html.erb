@@ -1,2 +1,40 @@
-<div id="<%= dom_id cart %>">
+<h2>Your Cart</h2>
+
+<table class="cart-table">
+  <% cart.line_items.each do |item| %>
+    <tr>
+      <td class="cart-quantity">
+        <%= item.quantity || 1 %>
+      </td>
+
+      <td>
+        <%= item.product.title %>
+      </td>
+
+      <td>
+        <%= number_to_currency(item.total_price) %>
+      </td>
+
+      <td class="cart-actions-cell">
+        <%= button_to "Remove",
+          line_item_path(item),
+          method: :delete,
+          class: "cart-remove-button",
+          title: "Remove this item from cart" %>
+      </td>
+    </tr>
+  <% end %>
+
+  <tr class="cart-total">
+    <td colspan="2">Total</td>
+    <td colspan="2"><%= number_to_currency(cart.total_price) %></td>
+  </tr>
+</table>
+
+<div class="cart-footer-actions">
+  <%= button_to "Empty Cart",
+    cart_path(cart),
+    method: :delete,
+    data: { turbo_confirm: "Are you sure you want to empty your cart?" },
+    class: "cart-empty-button" %>
 </div>

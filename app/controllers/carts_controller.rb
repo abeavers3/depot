@@ -48,14 +48,21 @@ class CartsController < ApplicationController
   end
 
   # DELETE /carts/1 or /carts/1.json
-  def destroy
-    @cart.destroy!
+def destroy
+  @cart.destroy! if @cart
 
-    respond_to do |format|
-      format.html { redirect_to carts_path, notice: "Cart was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
+  session[:cart_id] = nil
+
+  respond_to do |format|
+    format.html do
+      redirect_to root_path,
+        notice: "Your cart is currently empty.",
+        status: :see_other
     end
+
+    format.json { head :no_content }
   end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.

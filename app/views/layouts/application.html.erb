@@ -4,6 +4,7 @@
     <title><%= content_for(:title) || "Depot" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -15,15 +16,23 @@
 
   <body>
     <header class="depot-header">
-      <div class="depot-logo">Depot</div>
+      <div class="depot-logo">
+        Depot
+      </div>
     </header>
 
     <main class="depot-layout">
       <aside class="depot-sidebar">
+        <% if @cart && @cart.line_items.any? %>
+          <section id="cart" class="side-cart">
+            <%= render @cart %>
+          </section>
+        <% end %>
+
         <nav>
-          <a href="/">Home</a>
-          <a href="/products">Products</a>
-          <a href="/carts">Carts</a>
+          <%= link_to "Home", root_path %>
+          <%= link_to "Products", products_path %>
+          <%= link_to "Carts", carts_path %>
         </nav>
       </aside>
 
