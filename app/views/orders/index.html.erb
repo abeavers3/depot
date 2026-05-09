@@ -1,16 +1,25 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Orders" %>
-
 <h1>Orders</h1>
 
-<div id="orders">
+<div id="orders" class="product-list">
   <% @orders.each do |order| %>
-    <%= render order %>
-    <p>
-      <%= link_to "Show this order", order %>
-    </p>
+    <div class="product-entry">
+      <div>
+        <h2><%= order.name %></h2>
+
+        <p>
+          <strong>Email:</strong>
+          <%= order.email %>
+        </p>
+
+        <p>
+          <strong>Payment:</strong>
+          <%= order.pay_type %>
+        </p>
+
+        <p>
+          <%= link_to "Show this order", order %>
+        </p>
+      </div>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New order", new_order_path %>

@@ -135,14 +135,24 @@ p {
   line-height: 1.6;
 }
 
-.notice,
-p[style*="green"] {
+.notice  {
   display: inline-block;
   margin: 0 0 1rem;
   padding: 0.65rem 1rem;
   color: var(--green) !important;
   background: rgba(22, 124, 58, 0.1);
   border: 1px solid rgba(22, 124, 58, 0.18);
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.alert {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.65rem 1rem;
+  color: #c62828;
+  background: rgba(255, 59, 48, 0.1);
+  border: 1px solid rgba(255, 59, 48, 0.18);
   border-radius: 999px;
   font-weight: 600;
 }

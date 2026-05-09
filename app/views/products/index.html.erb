@@ -1,22 +1,22 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Products</h1>
 
 <div id="products" class="product-list">
   <% @products.each do |product| %>
     <div class="product-entry">
-      <%= image_tag(product.image_url, class: "product-image") if product.image_url.present? %>
+      <% if product.image_url.present? %>
+        <%= image_tag product.image_url, class: "product-image" %>
+      <% end %>
 
-      <div class="product-info">
+      <div>
         <h2><%= product.title %></h2>
 
         <p>
           <%= sanitize(product.description) %>
         </p>
 
-        <div class="product-price">
+        <p class="product-price">
           <%= number_to_currency(product.price) %>
-        </div>
+        </p>
 
         <p>
           <%= link_to "Show this product", product %>
@@ -26,4 +26,6 @@
   <% end %>
 </div>
 
-<%= link_to "New product", new_product_path %>
+<p>
+  <%= link_to "New product", new_product_path %>
+</p>

@@ -1,16 +1,19 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Carts" %>
-
 <h1>Carts</h1>
 
-<div id="carts">
+<div id="carts" class="product-list">
   <% @carts.each do |cart| %>
-    <%= render cart %>
-    <p>
-      <%= link_to "Show this cart", cart %>
-    </p>
+    <div class="product-entry">
+      <div>
+        <h2>Cart #<%= cart.id %></h2>
+
+        <p>
+          <%= pluralize(cart.line_items.count, "line item") %>
+        </p>
+
+        <p>
+          <%= link_to "Show this cart", cart %>
+        </p>
+      </div>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New cart", new_cart_path %>
