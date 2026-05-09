@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Products</h1>
+
+<div id="products" class="product-list">
+  <% @products.each do |product| %>
+    <div class="product-entry">
+      <%= image_tag(product.image_url, class: "product-image") if product.image_url.present? %>
+
+      <div class="product-info">
+        <h2><%= product.title %></h2>
+
+        <p>
+          <%= sanitize(product.description) %>
+        </p>
+
+        <div class="product-price">
+          <%= number_to_currency(product.price) %>
+        </div>
+
+        <p>
+          <%= link_to "Show this product", product %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "New product", new_product_path %>
