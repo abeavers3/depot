@@ -1,0 +1,11 @@
+one:
+  name: Dave Thomas
+  address: 123 Main Street
+  email: dave@example.com
+  pay_type: Check
+
+two:
+  name: Andy Hunt
+  address: 456 Oak Avenue
+  email: andy@example.com
+  pay_type: Credit card

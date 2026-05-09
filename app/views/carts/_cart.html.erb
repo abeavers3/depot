@@ -32,6 +32,11 @@
 </table>
 
 <div class="cart-footer-actions">
+  <%= button_to "Checkout",
+    new_order_path,
+    method: :get,
+    class: "cart-checkout-button" %>
+
   <%= button_to "Empty Cart",
     cart_path(cart),
     method: :delete,

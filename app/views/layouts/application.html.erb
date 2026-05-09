@@ -23,11 +23,11 @@
 
     <main class="depot-layout">
       <aside class="depot-sidebar">
-        <% if @cart && @cart.line_items.any? %>
-          <section id="cart" class="side-cart">
-            <%= render @cart %>
-          </section>
-        <% end %>
+<% if @cart && @cart.line_items.any? && controller_name == "store" %>
+  <section id="cart" class="side-cart">
+    <%= render @cart %>
+  </section>
+<% end %>
 
         <nav>
           <%= link_to "Home", root_path %>
