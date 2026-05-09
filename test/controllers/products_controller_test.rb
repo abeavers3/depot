@@ -44,11 +44,18 @@ end
     assert_redirected_to product_url(@product)
   end
 
-  test "should destroy product" do
-    assert_difference("Product.count", -1) do
-      delete product_url(@product)
-    end
+test "should destroy product" do
+  product = Product.create!(
+    title: "Temporary Product",
+    description: "A product created only for the destroy test.",
+    image_url: "rails.png",
+    price: 9.99
+  )
 
-    assert_redirected_to products_url
+  assert_difference("Product.count", -1) do
+    delete product_url(product)
   end
+
+  assert_redirected_to products_url
+end
 end

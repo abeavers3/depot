@@ -17,9 +17,9 @@
             <%= number_to_currency(product.price) %>
           </span>
 
-          <button class="store-add-button">
-            Add to Cart
-          </button>
+	<%= button_to "Add to Cart",
+	line_items_path(product_id: product),
+	 class: "store-add-button" %>
         </div>
       </div>
     </div>
