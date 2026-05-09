@@ -1,13 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  title: MyString
-  description: MyText
-  image_url: MyString
-  price: 9.99
+  title: Rails Book
+  description: Learn Rails with this practical guide.
+  image_url: rails.png
+  price: 49.95
 
 two:
-  title: MyString
-  description: MyText
-  image_url: MyString
-  price: 9.99
+  title: Ruby Book
+  description: Learn Ruby programming basics.
+  image_url: ruby.jpg
+  price: 39.95
