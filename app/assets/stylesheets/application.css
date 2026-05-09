@@ -157,3 +157,34 @@ form.button_to {
   display: inline-block;
   margin: 0;
 }
+
+.cart {
+  max-width: 700px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 0.85rem;
+  border-bottom: 1px solid #e5e5e5;
+  text-align: left;
+}
+
+.cart-table th {
+  font-weight: bold;
+  color: #333;
+}
+
+.cart-total td {
+  font-weight: bold;
+  border-bottom: none;
+  padding-top: 1.25rem;
+}
