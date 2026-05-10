@@ -1,16 +1,23 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Categories" %>
-
 <h1>Categories</h1>
 
-<div id="categories">
+<div id="categories" class="product-list">
   <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
+    <div class="product-entry">
+      <div>
+        <h2><%= category.name %></h2>
+
+        <p>
+          <%= pluralize(category.products.count, "product") %>
+        </p>
+
+        <p>
+          <%= link_to "Show this category", category %>
+        </p>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New category", new_category_path %>
+<p>
+  <%= link_to "New category", new_category_path %>
+</p>

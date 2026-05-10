@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :category, optional: true
 
-  has_many :line_items
+  has_many :line_items, dependent: :restrict_with_error
 
   validates :title, :description, :image_url, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0.01 }

@@ -1,10 +1,46 @@
-<p style="color: green"><%= notice %></p>
+<div class="category-show">
+  <h1><%= @category.name %></h1>
 
-<%= render @category %>
+  <p>
+    Products assigned to this category:
+  </p>
 
-<div>
-  <%= link_to "Edit this category", edit_category_path(@category) %> |
-  <%= link_to "Back to categories", categories_path %>
+  <% if @category.products.any? %>
+    <div class="product-list">
+      <% @category.products.order(:title).each do |product| %>
+        <div class="product-entry">
+          <% if product.image_url.present? %>
+            <%= image_tag product.image_url, class: "product-image" %>
+          <% end %>
 
-  <%= button_to "Destroy this category", @category, method: :delete %>
+          <div>
+            <div class="product-category-label">
+              <%= product.category&.name || "Uncategorized" %>
+            </div>
+
+            <h2><%= product.title %></h2>
+
+            <p>
+              <%= sanitize(product.description) %>
+            </p>
+
+            <p class="product-price">
+              <%= number_to_currency(product.price) %>
+            </p>
+
+            <p>
+              <%= link_to "Show this product", product %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No products are assigned to this category yet.</p>
+  <% end %>
+
+  <div class="cart-page-actions">
+    <%= link_to "Edit this category", edit_category_path(@category), class: "cart-back-link" %>
+    <%= link_to "Back to categories", categories_path, class: "cart-back-link" %>
+  </div>
 </div>
